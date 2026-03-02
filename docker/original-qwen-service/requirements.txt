@@ -1,0 +1,10 @@
+# Original Qwen inference service (PyTorch/Transformers)
+torch>=2.1.0
+transformers>=4.37.0
+accelerate
+fastapi>=0.100.0
+uvicorn[standard]>=0.22.0
+# Optional: for MODEL_ID download
+huggingface_hub
+modelscope
+protobuf

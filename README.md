@@ -88,3 +88,14 @@ For the backend that uses “remote model tar from MinIO”:
 - **Output:** Success + path or URI of the exported ONNX directory (or list of files); failure + error message.
 
 This spec (input fields, output format, and important flags) is the prototype contract for that backend method.
+
+---
+
+## Model-as-a-Service via Docker
+
+You can run inference as an HTTP service using Docker. **Full deployment guide (conda env → build → run):** [docker/README.md](docker/README.md).
+
+- **Original Qwen (PyTorch):** [docker/original-qwen-service](docker/original-qwen-service) — serves the original model (e.g. from Hugging Face / ModelScope or a mounted path).
+- **ONNX Qwen:** [docker/onnx-qwen-service](docker/onnx-qwen-service) — serves an ONNX-exported model (e.g. from `qwen-export.py`).
+
+**Build both images (CPU or CUDA):** `./scripts/build_images.sh cpu` or `./scripts/build_images.sh cuda`. Then run and call `GET /health` and `POST /infer` (optional body `{"prompt":"..."}`). See [docker/README.md](docker/README.md) for step-by-step deployment.
